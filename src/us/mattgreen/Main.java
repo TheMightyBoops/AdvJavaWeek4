@@ -21,7 +21,7 @@ public class Main {
                     .replace("-","").replace("!","")
                     .replace("#","").replace("(","")
                     .replace(")","").replace("?","")
-                    .replace("_"," ").replace("?","")
+                    .replace("_","").replace("?","")
                     .toLowerCase().trim();
             words = line.split(" ");
             for (String s:words) {
@@ -34,11 +34,23 @@ public class Main {
                 }
 
             }
+        }
+        int mostUsed = 0;
+        String mostUsedWord = "";
+        int wordsOccurringOnce= 0;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
 
-            for (Map.Entry<String, Integer> entry : map.entrySet()) {
-                System.out.println(entry.getKey() + " " + entry.getValue());
+            if(entry.getValue() > mostUsed) {
+                mostUsed = entry.getValue();
+                mostUsedWord = entry.getKey();
+            }
+
+            if(entry.getValue() == 1) {
+                wordsOccurringOnce++;
             }
         }
+        System.out.println(mostUsedWord + " " + mostUsed);
+        System.out.println(wordsOccurringOnce);
+
     }
-    
 }
